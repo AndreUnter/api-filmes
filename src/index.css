@@ -12,19 +12,20 @@ body{
     text-align: center;
 }
 
-span{
+span {
     font-weight: bold;
     text-align: center;
     font-size: 120%;
 }
 
-#inputStyle{
+#inputStyle {
     color: black;
     border: none;
     border-radius: 3px;
     width: 600px;
     height: 40px;
     margin: 2rem;
+    font-size: 20px;
 }
 
 #inputStyle:focus{

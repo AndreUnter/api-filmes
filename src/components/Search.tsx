@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import * as React from 'react';
 
 interface IMovie {
   adult: boolean;
@@ -8,7 +9,7 @@ interface IMovie {
   original_language: string;
   original_title: string;
   overview: string;
-  popularity: 1382.144;
+  popularity: number;
   poster_path: string;
   release_date: string;
   title: string;
@@ -26,7 +27,6 @@ const Search = () => {
   const getTopMovies = async (url: string) => {
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data.results);
     setMovies(data.results as IMovie[]);
   };
 
@@ -37,6 +37,8 @@ const Search = () => {
 
   const [busca, setBusca] = useState("");
 
+  const movieFilter = movies.filter((movie) => movie.title.toLowerCase().includes(busca.toLowerCase()))
+    
   return (
     <div className="App">
       <h1>API Filmes</h1>
@@ -49,7 +51,7 @@ const Search = () => {
       />
       <div>
         <ul>
-          {movies.map((movie) => {
+          {movieFilter.map((movie) => {
             return (
               <li key={movie.id}>
                 <a href="">
